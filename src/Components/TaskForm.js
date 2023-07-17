@@ -1,11 +1,13 @@
 import { useState, useEffect } from "react";
-function TaskForm({ addTask, showTaskForm }) {
+function TaskForm({ addTask, showTaskForm, toggleTask }) {
   const [taskInput, setTaskInput] = useState("");
+  const [status, setStatus] = useState("pending");
 
   const handleTaskSubmit = (e) => {
     e.preventDefault();
-    addTask(taskInput);
+    addTask(taskInput, status, setStatus);
     setTaskInput("");
+    toggleTask();
   };
   if (showTaskForm) {
     return (
@@ -23,5 +25,6 @@ function TaskForm({ addTask, showTaskForm }) {
     return null;
   }
 }
+//TODO: auto select form
 
 export default TaskForm;
