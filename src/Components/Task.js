@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 
-function Task({ taskText, status, setStatus }) {
+function Task({ taskText, updateTaskStatus, id }) {
   return (
     <div className="w-full px-3 py-3 flex border-slate-700 border-solid border-2 flex-row rounded-lg">
-      <CheckBox setStatus={setStatus} />
+      <CheckBox id={id} updateTaskStatus={updateTaskStatus} />
       <div className="h-8 flex text-xl grow items-center ml-3 font-sans w-max text-white">
         {taskText}
       </div>
@@ -13,16 +13,14 @@ function Task({ taskText, status, setStatus }) {
     </div>
   );
 }
-
-function CheckBox({ setStatus }) {
-  const handleClick = () => {
-    console.log("clicked on done");
-    setStatus("done");
-  };
-
+function CheckBox({ id, updateTaskStatus }) {
+  function handleClick(id) {
+    console.log(`youve clicked ${id} `);
+    updateTaskStatus(id);
+  }
   return (
     <div
-      onClick={handleClick}
+      onClick={() => handleClick(id)}
       className="w-8 h-8 rounded-md hover:bg-gray-700 border-slate-500 border-solid border-2"
     ></div>
   );

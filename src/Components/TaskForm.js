@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
 function TaskForm({ addTask, showTaskForm, toggleTask }) {
   const [taskInput, setTaskInput] = useState("");
-  const [status, setStatus] = useState("pending");
 
   const handleTaskSubmit = (e) => {
     e.preventDefault();
-    addTask(taskInput, status, setStatus);
+    console.log(taskInput);
+    addTask(taskInput);
     setTaskInput("");
     toggleTask();
   };
