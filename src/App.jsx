@@ -2,7 +2,6 @@ import "./App.css";
 import { useState } from "react";
 import React from "react";
 import TaskAddButton from "./Components/TaskAddButton";
-import TaskForm from "./Components/TaskForm";
 import TaskGroup from "./Components/TaskGroup";
 
 function App() {
@@ -12,7 +11,7 @@ function App() {
   const updateTaskStatus = (id, status) => {
     console.log(tasks);
     updateTask((prevList) =>
-      prevList.map((task) => (task.id === id ? { ...task, status } : task))
+      prevList.map((task) => (task.id === id ? { ...task, status } : task)),
     );
     console.log(tasks);
   };
@@ -34,7 +33,7 @@ function App() {
   };
   const pendingTasks = React.useMemo(
     () => tasks.filter((task) => task.status === "pending"),
-    [tasks]
+    [tasks],
   );
   return (
     <div className="w-screen justify-center items-center flex-col h-screen flex bg-gray-800">
